@@ -9,11 +9,13 @@ public class ApiCaller {
     
     public static void main(String[] args){
 
+        String apikey = System.getenv("RIOT_API_KEY");
+
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create("/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}"))
         .header("Accept", "application/json")
-        .header("X-Riot-Token", "RGAPI-38da51cd-be4e-46c1-b817-be8386dced8c")
+        .header("X-Riot-Token", apikey)
         .GET()
         .build();
 
