@@ -12,14 +12,20 @@ public static void main(String[] args){
 
  Scanner scan = new Scanner(System.in);
 
+ System.out.println(System.getenv("RIOT_API_KEY"));
+
 ApiCaller api = new ApiCaller();
 
-System.out.println("please enter your riot ID");
-String str = scan.nextLine();
+System.out.println("please enter your riot Username");
+String gameName = scan.nextLine();
 
-System.out.println("this is your riot id " + str);
+System.out.println("please enter your riot Tagline");
+String tagLine = scan.nextLine();
 
-info(str);
+String response = api.getAccountData(gameName, tagLine);
+
+System.out.println(response);
+
 
 }
 

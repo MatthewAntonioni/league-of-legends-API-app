@@ -7,13 +7,13 @@ import java.net.http.HttpResponse;
 
 public class ApiCaller {
     
-    public static void main(String[] args){
+    public String getAccountData(String gameName, String tagLine){
 
         String apikey = System.getenv("RIOT_API_KEY");
 
         HttpClient client = HttpClient.newHttpClient();
 
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}"))
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create( "https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + gameName + "/" + tagLine))
         .header("Accept", "application/json")
         .header("X-Riot-Token", apikey)
         .GET()
@@ -34,7 +34,10 @@ public class ApiCaller {
 
             e.printStackTrace();
 
+
+
         }
+        return null;
 
     }
 
